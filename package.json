@@ -1,0 +1,47 @@
+{
+  "name": "grunt-file-creator",
+  "description": "A grunt task that creates/writes to files from Javascript functions in the grunt config (useful for config files, etc).",
+  "version": "0.0.1",
+  "homepage": "https://github.com/travis-hilterbrand/grunt-file-creator",
+  "author": {
+    "name": "Travis Hilterbrand",
+    "url": "https://github.com/travis-hilterbrand/grunt-file-creator"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/travis-hilterbrand/grunt-file-creator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/travis-hilterbrand/grunt-file-creator/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/travis-hilterbrand/grunt-file-creator/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/grunt test"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt": "devel",
+    "grunt-contrib-jshint": "~0.1.0",
+    "grunt-contrib-nodeunit": "~0.1.0",
+    "grunt-cli": "~0.1.2"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "contributors": [
+    {
+      "name": "Travis Hilterbrand",
+      "url": "http://github.com/travis-hilterbrand"
+    }
+  ]
+}
