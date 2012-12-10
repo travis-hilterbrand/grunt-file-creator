@@ -107,4 +107,4 @@ grunt.initConfig({
 });
 ```
 
-For fully-working examples, see the unit-test folder.
+For fully-working examples, see the test folder.
