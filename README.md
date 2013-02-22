@@ -3,9 +3,7 @@ grunt-file-creator
 
 A grunt task that creates/writes to files from Javascript functions in the grunt config (useful for config files, etc).
 
-_Note that this plugin has not yet been released, and only works with the latest bleeding-edge, in-development version of grunt. See the [When will I be able to use in-development feature 'X'?](https://github.com/gruntjs/grunt/blob/devel/docs/faq.md#when-will-i-be-able-to-use-in-development-feature-x) FAQ entry for more information._
-
-####_Grunt 0.4 Compatible_
+####_Grunt ~0.4 Required_
 
 ## Getting Started
 _If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide._
