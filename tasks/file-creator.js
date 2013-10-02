@@ -10,6 +10,7 @@
 
 var cli = require('grunt/lib/grunt/cli');
 var fs = require('fs');
+var path = require('path');
 
 module.exports = function(grunt) {
 
@@ -27,7 +28,7 @@ module.exports = function(grunt) {
     };
 
     var fd, fileCount = 0;
-    var targetFiles = this.data.files;
+    var targetFiles = (_.isUndefined(this.data.files)) ? this.data : this.data.files;
     if (targetFiles) {
       async.forEachSeries(keysToArray(targetFiles), function(item, next) {
         var filepath = item.key;
@@ -45,6 +46,14 @@ module.exports = function(grunt) {
           var options = this.data.options || {};
           options = _.extend(defaultOptions, allOptions, options);
           grunt.verbose.writeflags(options, 'Options');
+
+          // create path (if needed)
+          var dir = filepath.split(path.sep);
+          dir.pop();
+          dir = path.join.apply(undefined, dir);
+          if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir, '0777', true);
+          }
 
           // open file
           fd = fs.openSync(filepath, options.openFlags);

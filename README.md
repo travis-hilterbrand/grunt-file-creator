@@ -54,11 +54,9 @@ In this example, running `grunt file-creator:basic` (or `grunt file-creator` bec
 grunt.initConfig({
   file-creator: {
     "basic": {
-      files: {
-        "dist/basic.txt": function(fs, fd, done) {
-          fs.writeSync(fd, 'some basic text');
-          done();
-        }
+      "dist/basic.txt": function(fs, fd, done) {
+        fs.writeSync(fd, 'some basic text');
+        done();
       }
     }
   }
@@ -81,23 +79,21 @@ grunt.initConfig({
       openFlags: 'w'
     },
     "folder": {
-      files: {
-        "dist/folder.txt": function(fs, fd, done) {
-            var glob = grunt.file.glob;
-            var _ = grunt.util._;
-            glob('test/fixtures/sample/**/*.js', function (err, files) {
-              var widgets = [];
-              _.each(files, function(file) {
-                widgets.push(file);
-              });
-
-              fs.writeSync(fd, '// this file is auto-generated.  DO NOT MODIFY\n');
-              _.each(widgets, function(file, i) {
-                fs.writeSync(fd, file + ':' + i + '\n');
-              });
-              done();
+      "dist/folder.txt": function(fs, fd, done) {
+          var glob = grunt.file.glob;
+          var _ = grunt.util._;
+          glob('test/fixtures/sample/**/*.js', function (err, files) {
+            var widgets = [];
+            _.each(files, function(file) {
+              widgets.push(file);
             });
-          }
+
+            fs.writeSync(fd, '// this file is auto-generated.  DO NOT MODIFY\n');
+            _.each(widgets, function(file, i) {
+              fs.writeSync(fd, file + ':' + i + '\n');
+            });
+            done();
+          });
         }
       }
     }

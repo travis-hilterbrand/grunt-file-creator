@@ -20,5 +20,13 @@ exports.clean = {
     test.equal(found, expected, 'should generate a file containing some complex text');
 
     test.done();
+  },
+  old: function(test) {
+    test.expect(1);
+
+    var found = fs.readFileSync('tmp/old.txt');
+    test.equal(found, 'old options format', 'should generate a file using the old options format');
+
+    test.done();
   }
 };
