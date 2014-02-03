@@ -52,7 +52,7 @@ In this example, running `grunt file-creator:basic` (or `grunt file-creator` bec
 ```js
 // Project configuration.
 grunt.initConfig({
-  file-creator: {
+  "file-creator": {
     "basic": {
       "dist/basic.txt": function(fs, fd, done) {
         fs.writeSync(fd, 'some basic text');
