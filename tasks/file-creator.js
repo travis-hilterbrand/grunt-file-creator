@@ -29,10 +29,29 @@ module.exports = function(grunt) {
 
     var fd, fileCount = 0;
     var targetFiles = (_.isUndefined(this.data.files)) ? this.data : this.data.files;
+
+    if (_.isArray(targetFiles)) {
+      // if target is an array, assume it is split into [{file,method},{file,method}] and do nothing
+    }
+    // if target is an object, turn it into an array
+    else if (_.isObject(targetFiles)) {
+      targetFiles = keysToArray(targetFiles);
+    }
+
+    grunt.verbose.writeln('targetFiles', targetFiles);
+
     if (targetFiles) {
-      async.forEachSeries(keysToArray(targetFiles), function(item, next) {
-        var filepath = item.key;
-        var method = item.value;
+      async.forEachSeries(targetFiles, function(item, next) {
+        var filepath = item.file;
+        var method = item.method;
+        if (_.isUndefined(filepath) || !_.isString(filepath)) {
+          grunt.log.error('Missing filepath', filepath);
+          return;
+        }
+        if (_.isUndefined(method)) {
+          grunt.log.error('Missing expansion method', method);
+          return;
+        }
         if (filepath === 'options') {
           // targets cannot be named "options" so that global-options are possible
           return;
@@ -88,7 +107,7 @@ module.exports = function(grunt) {
   var keysToArray = function(o) {
     var a = [];
     _.each(o, function(value, key) {
-      a.push({key:key,value:value});
+      a.push({file:key,method:value});
     });
     return a;
   };
