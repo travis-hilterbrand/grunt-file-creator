@@ -101,4 +101,59 @@ grunt.initConfig({
 });
 ```
 
+#### Specifying filenames conditionally using grunt templates
+
+For more information, see the grunt documentation on templates (http://gruntjs.com/api/grunt.template).
+
+```js
+  grunt.initConfig({
+    conditional: {
+      file: 'conditional.txt'
+    },
+
+    "file-creator": {
+      "conditional": {
+        files: [
+          {
+            file: "tmp/" + '<%= conditional.file %>',
+            method: function(fs, fd, done) {
+              fs.writeSync(fd, 'filenames can be set using grunt templates');
+              done();
+            }
+          }
+        ]
+      }
+    }
+  });
+```
+
+#### Specifying filenames on the command line using grunt options
+
+For more information, see the grunt documentation on options (http://gruntjs.com/api/grunt.option).
+
+Using this command line, the file can be set conditionally using options.
+<pre>
+grunt file-creator --option-name=myfile.txt
+</pre>
+
+
+```js
+  grunt.initConfig({
+      "option": {
+        files: [
+          {
+            file: "tmp/" + (grunt.option('option-name') || 'option.txt'),
+            method: function(fs, fd, done) {
+              fs.writeSync(fd, 'filenames can be set as grunt options (passed on the command line)');
+              done();
+            }
+          }
+        ]
+      }
+    }
+  });
+
+```
+
+
 For fully-working examples, see the test folder.

@@ -30,6 +30,10 @@
       }
     },
 
+    conditional: {
+      file: 'conditional.txt'
+    },
+
     // Configuration to be run (and then tested).
     "file-creator": {
       "basic": {
@@ -56,6 +60,43 @@
           });
         }
       },
+
+      "expanded": {
+        files: [
+          {
+            file: "tmp/" + "expanded.txt",
+            method: function(fs, fd, done) {
+              fs.writeSync(fd, 'the expanded file format allows keys to be variables');
+              done();
+            }
+          }
+        ]
+      },
+
+      "conditional": {
+        files: [
+          {
+            file: "tmp/" + '<%= conditional.file %>',
+            method: function(fs, fd, done) {
+              fs.writeSync(fd, 'filenames can be set using grunt templates');
+              done();
+            }
+          }
+        ]
+      },
+
+      "option": {
+        files: [
+          {
+            file: "tmp/" + (grunt.option('option-name') || 'option.txt'),
+            method: function(fs, fd, done) {
+              fs.writeSync(fd, 'filenames can be set as grunt options (passed on the command line)');
+              done();
+            }
+          }
+        ]
+      },
+  
       "old": {
         files: {
           "tmp/old.txt": function(fs, fd, done) {
