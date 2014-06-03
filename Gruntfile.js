@@ -8,6 +8,10 @@
   "use strict";
 
   grunt.initConfig({
+    meta: {
+      revision: "1.2.3"
+    },
+
     jshint: {
       all: [
         'Gruntfile.js',
@@ -97,6 +101,18 @@
         ]
       },
   
+      "config": {
+        files: [
+          {
+            file: "tmp/config-<%= grunt.config('meta.revision') %>.txt",
+            method: function(fs, fd, done) {
+              fs.writeSync(fd, 'filenames can be set using grunt config objects');
+              done();
+            }
+          }
+        ]
+      },
+
       "old": {
         files: {
           "tmp/old.txt": function(fs, fd, done) {

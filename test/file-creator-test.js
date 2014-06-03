@@ -48,6 +48,15 @@ exports.clean = {
 
     test.done();
   },
+  config: function(test) {
+    test.expect(1);
+
+    var found = fs.readFileSync('tmp/config-1.2.3.txt');
+    var expected = "filenames can be set using grunt config objects";
+    test.equal(found, expected, 'should generate a file using grunt config');
+
+    test.done();
+  },
   old: function(test) {
     test.expect(1);
 
