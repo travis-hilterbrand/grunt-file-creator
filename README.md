@@ -74,7 +74,7 @@ The glob operation is asynchronous.  The target iteration performed by file-crea
 ```js
 // Project configuration.
 grunt.initConfig({
-  file-creator: {
+  "file-creator": {
     options: {
       openFlags: 'w'
     },
