@@ -69,6 +69,9 @@ module.exports = function(grunt) {
           // create path (if needed)
           var dir = filepath.split(path.sep);
           dir.pop();
+          if (filepath.indexOf('/') === 0) {
+            dir.unshift('/');
+          }
           dir = path.join.apply(undefined, dir);
           if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, '0777', true);
