@@ -69,8 +69,8 @@ module.exports = function(grunt) {
           // create path (if needed)
           var dir = filepath.split(path.sep);
           dir.pop();
-          if (filepath.indexOf('/') === 0) {
-            dir.unshift('/');
+          if (filepath.indexOf(path.sep) === 0) {
+            dir.unshift(path.sep);
           }
           dir = path.join.apply(undefined, dir);
           if (!fs.existsSync(dir)) {
