@@ -1,7 +1,7 @@
 {
   "name": "grunt-file-creator",
   "description": "Creates/writes to files from Javascript functions in the grunt config (useful for config files, etc).",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/travis-hilterbrand/grunt-file-creator",
   "author": {
     "name": "Travis Hilterbrand",
