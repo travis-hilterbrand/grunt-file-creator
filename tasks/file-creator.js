@@ -67,9 +67,7 @@ module.exports = function(grunt) {
           grunt.verbose.writeflags(options, 'Options');
 
           // create path (if needed)
-          var dir = filepath.split(path.sep);
-          dir.pop();
-          dir = path.join.apply(undefined, dir);
+          var dir = path.dirname(filepath);
           if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, '0777', true);
           }
